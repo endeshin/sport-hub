@@ -1,4 +1,4 @@
-import { assertAuth } from "../../lib/auth";
+import { assertAuth } from "../../lib/sessionAuth";
 
 export function AuthGuard({
   children,
@@ -6,6 +6,5 @@ export function AuthGuard({
   children: React.ReactNode;
 }>) {
   assertAuth();
-
   return children;
 }

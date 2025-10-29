@@ -24,9 +24,9 @@ export async function checkAuth() {
 export function assertAuth() {
   const userId = checkAuth();
 
-  if (userId == null) {
-    redirect("/login");
-  }
+//  if (userId == null) {
+//    redirect("/login");
+//  }
 
   return userId;
 }
