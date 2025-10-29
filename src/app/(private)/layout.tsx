@@ -1,11 +1,9 @@
-export default function RootLayout({
+import { AuthGuard } from "./AuthGuard";
+
+export default function PrivateLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  //const userId = checkAuth();
-
-  return (
-    {children}
-  );
+  return <AuthGuard>{children}</AuthGuard>;
 }
