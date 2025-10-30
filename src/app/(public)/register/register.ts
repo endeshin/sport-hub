@@ -11,10 +11,7 @@ export async function register(
 ){
     const db = createDB();
     const cookieStore = await cookies();
-    await db`INSERT INTO users VALUES (${email}, ${username}, ${password})`;
-    const newUserId = await db`
-        SELECT id FROM users WHERE email = ${email};
-    `
+    const newUserId = await db`INSERT INTO users (email, username, password) VALUES (${email}, ${username}, ${password}) RETURNING id`;
     cookieStore.set("session-user-id", `${newUserId}`);
     redirect("/dashboard")
 };

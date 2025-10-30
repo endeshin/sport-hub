@@ -1,15 +1,16 @@
  //https://www.flaticon.com/free-icon/user_15181334?term=user&page=1&position=5&origin=search&related_id=15181334 | User Icon
- 
 
 import { assertAuth } from "@/lib/sessionAuth";
-// import { createDB } from "@/lib/db";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 //import Image from "next/image";
-
+// import { createDB } from "@/lib/db";
 
 
 //const db = createDB();
-
+export async function logout() {
+    redirect("/")
+}
 
 export default async function NavBar() {
   const userId = assertAuth();
@@ -25,6 +26,9 @@ if (await userId || null){
                     <li>
                         <Link href={"/profile"}>
                         </Link>
+                    </li>
+                    <li>
+                        <button onClick={logout}>Sign out</button>
                     </li>
                 </ul>
             </div>

@@ -10,12 +10,10 @@ export async function signIn(
 ){
     const db = createDB();
     const cookieStore = await cookies();
-    if (password || await db`SELECT password WHERE email = ${email};`) {
-        alert("Password doesn't match with the registered password. Please try again.");
-    } else {
+    if (password && await db`SELECT password FROM users WHERE email = ${email};`) {
         const newUserId = await db`
         SELECT id FROM users WHERE email = ${email};
-    `
+        `
         cookieStore.set("session-user-id", `${newUserId}`);
         redirect("/dashboard")
     }

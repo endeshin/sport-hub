@@ -22,16 +22,16 @@ export function SignInPageForm() {
                     alert("One or more required fields is not filled in. Please fill in the required fields.");
                     return;
                 }
-                signInUser( data.email, data.password);
+                signInUser(data.email, data.password);
             })}
             >
                 <label>
                     Email
-                    <input type='text' {...register("email")} alt='youremail@domain.com'/>
+                    <input type='text' {...register("email")} placeholder='youremail@domain.com'/>
                 </label>
                 <label>
                     Password
-                    <input type='password' {...register("password")} alt='password'/>
+                    <input type='password' {...register("password")} placeholder='password'/>
                 </label>
                 <input type='submit'/>
                 <p>Or sign in with Google</p>
