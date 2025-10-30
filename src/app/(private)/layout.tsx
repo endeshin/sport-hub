@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import { AuthGuard } from "./AuthGuard";
 import { assertAuth } from "../../lib/sessionAuth";
 import AuthProvider from "./AuthProvider";
