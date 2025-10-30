@@ -1,8 +1,11 @@
-import NextAuth from 'next-auth';
-import { authOptions } from './authOptions';
+import { NextRequest } from "next/server";
+import NextAuth from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
-console.log("Loading NextAuth route handler with external auth options");
+export async function GET(req: NextRequest) {
+  return await NextAuth(authOptions)(req);
+}
 
-// Create and export NextAuth handler
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST }; 
+export async function POST(req: NextRequest) {
+  return await NextAuth(authOptions)(req);
+}
