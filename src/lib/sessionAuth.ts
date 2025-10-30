@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export async function checkAuth() {
   const cookieStore = await cookies();
@@ -23,10 +22,6 @@ export async function checkAuth() {
 
 export function assertAuth() {
   const userId = checkAuth();
-
-//  if (userId == null) {
-//    redirect("/login");
-//  }
 
   return userId;
 }

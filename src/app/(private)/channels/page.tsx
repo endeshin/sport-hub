@@ -4,13 +4,13 @@ import Image from "next/image";
 
 //
 
-export default async function dashboardPage() {
+export default async function channelsPage() {
     const db = createDB();
-    const channelNames = await db`SELECT id, name, desc, category, icon FROM channel SORT BY members DESC LIMIT 8`
+    const channelNames = await db`SELECT id, name, desc, category, icon FROM channel SORT BY members DESC`
 
     return(
         <div>
-            <h1>Popular Channels</h1>
+            <h1>Channels</h1>
             <div>
                 {channelNames.map((c) =>
                 <div key={c.id}>
@@ -26,7 +26,6 @@ export default async function dashboardPage() {
                 </div>
                 )}
             </div>
-            <Link href={"/channels"}>or many more...</Link>
         </div>
     )
 }

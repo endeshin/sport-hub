@@ -4,7 +4,7 @@
 import { assertAuth } from "@/lib/sessionAuth";
 // import { createDB } from "@/lib/db";
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 
 
 
@@ -12,31 +12,30 @@ import Image from "next/image";
 
 
 export default async function NavBar() {
-  const userId = assertAuth;
+  const userId = assertAuth();
 
-if (userId == null){
+if (await userId || null){
         return(
-        <div className="navBar_Guest" id="navbar">
-            <Image src={""} alt="Logo" />
-            <ul>
-                <li><Link href={"/sign-up"}>Sign Up</Link></li>
-                <li><Link href={"/sign-in"}>Sign In</Link></li>
-            </ul>
-        </div>
-)} else {
-    return(
-        //const userPfpImg = await db`select pfpUrl from users where userId = ${userId}`;
-        <div className="navBar" id="navbar">
-                <Image src={""} alt="Logo"/>
+            <div className="navBar" id="navbar">
+                <Link href={"/dashboard"}>Logo</Link>
                 <ul>
                     <li>
                         <input placeholder={"Search currently isn't implemented"} />
                     </li>
                     <li>
                         <Link href={"/profile"}>
-                            <Image src={"@/img/user.pgn"} alt=""/>
                         </Link>
                     </li>
                 </ul>
-              </div>
+            </div>
+)} else {
+    return(
+        //const userPfpImg = await db`select pfpUrl from users where userId = ${userId}`;
+        <div className="navBar_Guest" id="navbar">
+            <Link href={"/"}>Logo</Link>
+            <ul>
+                <li><Link href={"/register"}>Register</Link></li>
+                <li><Link href={"/sign-in"}>Sign In</Link></li>
+            </ul>
+        </div>
 )}};
