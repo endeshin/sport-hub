@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { register as registerUser } from "./register";
 import { Suspense } from "react";
-import { googleRegister as googleRegisterUser } from "./google-register_sign-in";
+import { signIn } from "next-auth/react";
 
 //
 
@@ -16,6 +16,9 @@ interface FormValues{
 
 export function RegisterPageForm() {
     const { register, handleSubmit } = useForm<FormValues>();
+    const handleGoogleSignIn = () => {
+        signIn('google', { callbackUrl: '/dashboard' });
+    };
 
     return(
         <Suspense>
@@ -49,7 +52,7 @@ export function RegisterPageForm() {
                 <input type='submit'/>
                 <p>Or register with Google</p>
             </form>
-            <button onClick={googleRegisterUser}>Google</button>
+            <button onClick={handleGoogleSignIn}>Google</button>
         </Suspense>
 )
 };

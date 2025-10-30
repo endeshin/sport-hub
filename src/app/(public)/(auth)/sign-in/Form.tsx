@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { signIn as signInUser } from "./sign-in";
 import { Suspense } from "react";
-import { googleRegister as googleRegisterUser } from "@/app/(public)/register/google-register_sign-in";
+import { signIn } from "next-auth/react";
 
 //
 
@@ -36,7 +36,7 @@ export function SignInPageForm() {
                 <input type='submit'/>
                 <p>Or sign in with Google</p>
             </form>
-            <button onClick={googleRegisterUser}>Google</button>
+            <button onClick={() => signIn("google", { callbackUrl: "/dashboard" })}>Google</button>
         </Suspense>
 )
 };
