@@ -20,7 +20,10 @@ export function RegisterPageForm() {
     return(
         <Suspense>
             <form onSubmit={handleSubmit((data) => {
-                if (data.password != data.confirmPassword) {
+                if (!data.email || !data.username || !data.password || !data.confirmPassword) {
+                    alert("One or more required fields is not filled in. Please fill in the required fields.");
+                    return;
+                } else if (data.password != data.confirmPassword) {
                     alert("Passwords are not matching. Check your password and try again.");
                     return;
                 }

@@ -18,6 +18,10 @@ export function SignInPageForm() {
     return(
         <Suspense>
             <form onSubmit={handleSubmit((data) => {
+                if (!data.email || !data.password) {
+                    alert("One or more required fields is not filled in. Please fill in the required fields.");
+                    return;
+                }
                 signInUser( data.email, data.password);
             })}
             >
