@@ -13,7 +13,7 @@ import Image from "next/image";
 export default async function NavBar() {
   const userId = assertAuth();
 
-if (await userId || null){
+if (await userId != null){
         return(
             <div className="navBar" id="navbar">
                 <Link href={"/dashboard"}><Image src={"/img/logo.svg"} alt={"Logo"} width={50} height={50} /></Link>
