@@ -9,9 +9,6 @@ import Image from "next/image";
 
 
 //const db = createDB();
-export async function logout() {
-    redirect("/")
-}
 
 export default async function NavBar() {
   const userId = assertAuth();
@@ -29,7 +26,7 @@ if (await userId || null){
                         </Link>
                     </li>
                     <li>
-                        <button onClick={logout}>Sign out</button>
+                        <button onClick={redirect("/")}>Sign out</button>
                     </li>
                 </ul>
             </div>
