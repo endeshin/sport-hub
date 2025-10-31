@@ -16,9 +16,6 @@ interface FormValues{
 
 export function RegisterPageForm() {
     const { register, handleSubmit } = useForm<FormValues>();
-    const handleGoogleSignIn = () => {
-        signIn('google', { callbackUrl: '/dashboard' });
-    };
 
     return(
         <Suspense>
@@ -52,7 +49,7 @@ export function RegisterPageForm() {
                 <input type='submit'/>
                 <p>Or register with Google</p>
             </form>
-            <button onClick={handleGoogleSignIn}>Google</button>
+            <button onClick={() => signIn('google', { callbackUrl: '/dashboard' })}>Google</button>
         </Suspense>
 )
 };

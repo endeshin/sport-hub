@@ -3,6 +3,7 @@
 import { assertAuth } from "@/lib/sessionAuth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Image from "next/image";
 //import Image from "next/image";
 // import { createDB } from "@/lib/db";
 
@@ -18,7 +19,7 @@ export default async function NavBar() {
 if (await userId || null){
         return(
             <div className="navBar" id="navbar">
-                <Link href={"/dashboard"}>Logo</Link>
+                <Link href={"/dashboard"}><Image src={"/img/logo.svg"} alt={"Logo"} width={50} height={50} /></Link>
                 <ul>
                     <li>
                         <input placeholder={"Search currently isn't implemented"} />
@@ -36,7 +37,7 @@ if (await userId || null){
     return(
         //const userPfpImg = await db`select pfpUrl from users where userId = ${userId}`;
         <div className="navBar_Guest" id="navbar">
-            <Link href={"/"}>Logo</Link>
+            <Link href={"/"}><Image src={"/img/logo.svg"} alt={"Logo"} width={50} height={50} /></Link>
             <ul>
                 <li><Link href={"/register"}>Register</Link></li>
                 <li><Link href={"/sign-in"}>Sign In</Link></li>
