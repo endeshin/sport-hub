@@ -8,8 +8,9 @@ export default async function SideBar(){
     const cookieStore = await cookies();
     const thisUserId = cookieStore.get("session-user-id")
     //
-    const joinedChannels = await db`SELECT channels.id, channels.name, channels.icon FROM channels LEFT JOIN in-channel ON in-channel.channel_id = channels.id WHERE in-channel.user_id = ${thisUserId} ASC`
-    const joinedGroups = await db`SELECT id, name, desc, category, icon FROM channel SORT BY members DESC LIMIT 8`
+    //const joinedChannels = await db`SELECT channels.id, channels.name, channels.icon FROM channels LEFT JOIN in-channel ON in-channel.channel_id = channels.id WHERE in-channel.user_id = ${thisUserId} ASC`
+    const joinedChannels = await db`SELECT id, name, desc, category, icon FROM channels SORT BY members DESC`
+    const joinedGroups = await db`SELECT id, name, desc, category, icon FROM channels SORT BY members DESC LIMIT 8`
 
 
 if (await thisUserId || null){
