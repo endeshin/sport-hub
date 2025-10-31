@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { createDB } from "@/lib/db";
+//import { createDB } from "@/lib/db";
 import { cookies } from "next/headers";
 
 export default async function SideBar(){
-    const db = createDB();
+    //const db = createDB();
     const cookieStore = await cookies();
     const thisUserId = cookieStore.get("session-user-id")
     //
