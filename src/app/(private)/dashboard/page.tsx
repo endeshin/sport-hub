@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default async function dashboardPage() {
     const db = createDB();
-    const channelNames = await db`SELECT id, name, desc, category, icon FROM channels SORT BY members LIMIT 8`
+    const channelNames = await db`SELECT id, name icon FROM channels SORT BY members LIMIT 8 DESC`
 
     return(
         <div>
@@ -18,10 +18,8 @@ export default async function dashboardPage() {
                         {c.icon != null && c.icon.length > 0 ? (
                             <Image src={c.icon} alt="Post photo" />
                         ) : null}
-                        <p>{c.category}</p>
                         <h3>{c.name}</h3>
                         <hr />
-                        <p>{c.desc}</p>
                     </Link>
                 </div>
                 )}
