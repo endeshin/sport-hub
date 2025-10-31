@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default async function channelsPage() {
     const db = createDB();
-    const channelNames = await db`SELECT id, name, desc, category, icon FROM channels SORT BY members`
+    const channelNames = await db`SELECT id, name, desc, category, icon FROM channels ORDER BY members`
 
     return(
         <div>
